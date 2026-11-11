@@ -14,6 +14,7 @@
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="preload" href="assets/fonts/nunito-cyrillic-900-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
@@ -41,8 +42,9 @@
       </a>
 
       <nav class="nav" data-nav aria-label="Основное меню">
-        <a class="nav__link" href="#services">Направления</a>
+        <a class="nav__link" href="#services">Услуги</a>
         <a class="nav__link" href="#about">О клинике</a>
+        <a class="nav__link" href="#doctors">Наши специалисты</a>
         <a class="nav__link" href="#steps">Как записаться</a>
         <a class="nav__link" href="#contacts">Контакты</a>
         <a class="nav__phone nav__phone--mobile" href="tel:+74852681020">+7 (4852) 68-10-20</a>
@@ -81,8 +83,8 @@
 
           <p class="hero__lead reveal">
             Мультиклиника «ДоброВелс» в&nbsp;центре Ярославля. Педиатр, офтальмолог
-            и&nbsp;невролог в&nbsp;одном месте, а&nbsp;ещё своя детская оптика&nbsp;— спокойно,
-            бережно и&nbsp;без очередей.
+            и&nbsp;невролог, а&nbsp;ещё своя детская оптика&nbsp;— спокойно, бережно
+            и&nbsp;с&nbsp;заботой.
           </p>
 
           <div class="hero__actions reveal">
@@ -96,47 +98,26 @@
             </a>
           </div>
 
-          <ul class="hero__facts reveal">
-            <li><strong>7</strong><span>врачей&nbsp;—<br>детских специалистов</span></li>
-            <li><strong>0–18</strong><span>лет&nbsp;—<br>возраст пациентов</span></li>
-            <li><strong>3</strong><span>направления<br>медицины</span></li>
-          </ul>
+          <p class="hero__age reveal">
+            <strong>0–18&nbsp;лет</strong>
+            <span>возраст наших пациентов</span>
+          </p>
         </div>
 
         <div class="hero__visual reveal">
-          <div class="heart-scene">
-            <svg class="heart-scene__heart" viewBox="0 0 400 360" aria-hidden="true">
-              <defs>
-                <linearGradient id="heartStroke" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#6ca1b2"/>
-                  <stop offset=".55" stop-color="#94a849"/>
-                  <stop offset="1" stop-color="#b6c96a"/>
-                </linearGradient>
-                <radialGradient id="heartFill" cx=".5" cy=".42" r=".6">
-                  <stop offset="0" stop-color="#ffffff"/>
-                  <stop offset="1" stop-color="#eef5e1"/>
-                </radialGradient>
-              </defs>
-              <path class="heart-scene__shape" d="M200 330C120 270 30 205 30 120 30 65 72 28 122 28c34 0 62 18 78 46 16-28 44-46 78-46 50 0 92 37 92 92 0 85-90 150-170 210Z" fill="url(#heartFill)" stroke="url(#heartStroke)" stroke-width="16" stroke-linejoin="round"/>
-            </svg>
-
-            <div class="team">
-              <img class="team__photo team__photo--main" src="assets/doctor-1.jpg" alt="Врач детской мультиклиники «ДоброВелс»" width="300" height="300">
-              <img class="team__photo team__photo--left" src="assets/doctor-2.jpg" alt="Врач детской мультиклиники «ДоброВелс»" width="300" height="300" loading="lazy">
-              <img class="team__photo team__photo--right" src="assets/doctor-3.jpg" alt="Врач детской мультиклиники «ДоброВелс»" width="300" height="300" loading="lazy">
+          <div class="emblem">
+            <svg class="emblem__sun" viewBox="0 0 200 200" aria-hidden="true"><path d="M196.0 100.0L193.8 104.9L188.3 109.3L182.3 113.0L178.4 116.7L178.3 121.0L181.3 126.4L185.2 132.7L187.1 138.8L185.2 143.4L179.7 146.0L172.4 147.0L166.0 147.9L162.2 150.4L161.4 155.3L162.2 162.2L162.5 169.4L160.4 174.6L155.5 176.4L148.8 175.2L142.0 172.7L136.5 171.6L132.8 173.7L130.4 179.1L128.0 186.0L124.6 191.7L119.9 193.7L114.5 191.6L109.1 186.7L104.3 181.9L100.0 180.0L95.7 181.9L90.9 186.7L85.5 191.6L80.1 193.7L75.4 191.7L72.0 186.0L69.6 179.1L67.2 173.7L63.5 171.6L58.0 172.7L51.2 175.2L44.5 176.4L39.6 174.6L37.5 169.4L37.8 162.2L38.6 155.3L37.8 150.4L34.0 147.9L27.6 147.0L20.3 146.0L14.8 143.4L12.9 138.8L14.8 132.7L18.7 126.4L21.7 121.0L21.6 116.7L17.7 113.0L11.7 109.3L6.2 104.9L4.0 100.0L6.2 95.1L11.7 90.7L17.7 87.0L21.6 83.3L21.7 79.0L18.7 73.6L14.8 67.3L12.9 61.2L14.8 56.6L20.3 54.0L27.6 53.0L34.0 52.1L37.8 49.6L38.6 44.7L37.8 37.8L37.5 30.6L39.6 25.4L44.5 23.6L51.2 24.8L58.0 27.3L63.5 28.4L67.2 26.3L69.6 20.9L72.0 14.0L75.4 8.3L80.1 6.3L85.5 8.4L90.9 13.3L95.7 18.1L100.0 20.0L104.3 18.1L109.1 13.3L114.5 8.4L119.9 6.3L124.6 8.3L128.0 14.0L130.4 20.9L132.8 26.3L136.5 28.4L142.0 27.3L148.8 24.8L155.5 23.6L160.4 25.4L162.5 30.6L162.2 37.8L161.4 44.7L162.2 49.6L166.0 52.1L172.4 53.0L179.7 54.0L185.2 56.6L187.1 61.2L185.2 67.3L181.3 73.6L178.3 79.0L178.4 83.3L182.3 87.0L188.3 90.7L193.8 95.1L196.0 100.0Z"/></svg>
+            <div class="emblem__toys" aria-hidden="true">
+              <svg class="toy toy--balloon-teal" viewBox="0 0 60 110"><path d="M30 4C16 4 6 16 6 31c0 18 14 33 24 37 10-4 24-19 24-37C54 16 44 4 30 4Z"/><path d="M26 68h8l-4 6Z"/><path class="toy__string" d="M30 74c-6 10 6 16 0 26"/><path class="toy__shine" d="M18 22c3-6 8-9 13-9"/></svg>
+              <svg class="toy toy--balloon-pink" viewBox="0 0 60 110"><path d="M30 4C16 4 6 16 6 31c0 18 14 33 24 37 10-4 24-19 24-37C54 16 44 4 30 4Z"/><path d="M26 68h8l-4 6Z"/><path class="toy__string" d="M30 74c-6 10 6 16 0 26"/><path class="toy__shine" d="M18 22c3-6 8-9 13-9"/></svg>
+              <svg class="toy toy--cloud" viewBox="0 0 120 70"><path d="M30 62a22 22 0 0 1 0-44 28 28 0 0 1 52-6 22 22 0 0 1 16 41 18 18 0 0 1-6 9Z"/></svg>
+              <svg class="toy toy--star" viewBox="0 0 50 50"><path d="M25 3l6 14 15 2-11 10 3 15-13-7-13 7 3-15L4 19l15-2Z"/></svg>
+              <svg class="toy toy--star-small" viewBox="0 0 50 50"><path d="M25 3l6 14 15 2-11 10 3 15-13-7-13 7 3-15L4 19l15-2Z"/></svg>
+              <svg class="toy toy--heart" viewBox="0 0 50 46"><path d="M25 44S3 31 3 15C3 8 8 3 14 3c5 0 9 3 11 7 2-4 6-7 11-7 6 0 11 5 11 12 0 16-22 29-22 29Z"/></svg>
             </div>
+            <img class="emblem__logo" src="assets/logo-round.webp" alt="Детская мультиклиника «ДоброВелс»" width="720" height="720">
           </div>
-
-          <dl class="hero__notes">
-            <div>
-              <dt>Бережно</dt>
-              <dd>без слёз и&nbsp;страха</dd>
-            </div>
-            <div>
-              <dt>Без очередей</dt>
-              <dd>приём по&nbsp;времени</dd>
-            </div>
-          </dl>
+          <p class="hero__motto"><b>Бережно</b>&nbsp;— без слёз и&nbsp;страха</p>
         </div>
       </div>
 
@@ -148,9 +129,9 @@
     <section class="section section--tint" id="services">
       <div class="container">
         <header class="section__head reveal">
-          <span class="eyebrow">Направления</span>
+          <span class="eyebrow">Услуги</span>
           <h2 class="section__title">Зрение, здоровье<br>и&nbsp;развитие ребёнка</h2>
-          <p class="section__lead">Ведущие детские специалисты Ярославля по&nbsp;офтальмологии, педиатрии и&nbsp;неврологии. Консультации, диагностика, лечение и&nbsp;подбор оптики&nbsp;— в&nbsp;одной клинике.</p>
+          <p class="section__lead">Ведущие детские специалисты Ярославля по&nbsp;офтальмологии, педиатрии и&nbsp;неврологии. Консультации, диагностика, лечение, подбор очков и&nbsp;контактных линз&nbsp;— в&nbsp;одной клинике.</p>
         </header>
 
         <div class="services" data-services></div>
@@ -177,21 +158,20 @@
             <li class="feature reveal">
               <span class="feature__num">01</span>
               <div>
-                <h3>Врачи, которые умеют с&nbsp;детьми</h3>
+                <h3>Врачи, которые умеют находить общий язык с&nbsp;каждым ребёнком</h3>
                 <p>Находим подход к&nbsp;малышам и&nbsp;подросткам: сначала знакомство и&nbsp;игра, потом осмотр.</p>
               </div>
             </li>
             <li class="feature reveal">
               <span class="feature__num">02</span>
               <div>
-                <h3>Приём по времени</h3>
-                <p>Никаких часов в&nbsp;коридоре с&nbsp;кашляющими детьми&nbsp;— приходите к&nbsp;своему времени.</p>
+                <h3>Приём по&nbsp;предварительной записи</h3>
               </div>
             </li>
             <li class="feature reveal">
               <span class="feature__num">03</span>
               <div>
-                <h3>Понятные рекомендации</h3>
+                <h3>Доступные и&nbsp;понятные рекомендации</h3>
                 <p>Объясняем родителям, что происходит и&nbsp;что делать дальше, без лишних назначений.</p>
               </div>
             </li>
@@ -199,7 +179,7 @@
               <span class="feature__num">04</span>
               <div>
                 <h3>Удобно добраться</h3>
-                <p>Центр города, ул.&nbsp;Республиканская, 6&nbsp;— рядом с&nbsp;остановками общественного транспорта.</p>
+                <p>Самый центр города, рядом с&nbsp;Октябрьской площадью&nbsp;— здесь проходит почти 20&nbsp;маршрутов общественного транспорта.</p>
               </div>
             </li>
           </ul>
@@ -207,7 +187,42 @@
       </div>
     </section>
 
-    <section class="section section--tint" id="steps">
+    <section class="section section--tint doctors" id="doctors">
+      <div class="container">
+        <header class="section__head section__head--center reveal">
+          <span class="eyebrow">Наши специалисты</span>
+          <h2 class="section__title">Знакомьтесь с&nbsp;нашими врачами</h2>
+          <p class="section__lead">Опытные детские специалисты, которые умеют находить общий язык с&nbsp;каждым ребёнком.</p>
+        </header>
+
+        <div class="doctors__deco" aria-hidden="true">
+          <svg class="deco deco--balloon" viewBox="0 0 60 110"><path d="M30 4C16 4 6 16 6 31c0 18 14 33 24 37 10-4 24-19 24-37C54 16 44 4 30 4Z"/><path d="M26 68h8l-4 6Z"/><path class="deco__string" d="M30 74c-6 10 6 16 0 26"/><path class="deco__shine" d="M18 22c3-6 8-9 13-9"/></svg>
+          <svg class="deco deco--cloud" viewBox="0 0 120 70"><path d="M30 62a22 22 0 0 1 0-44 28 28 0 0 1 52-6 22 22 0 0 1 16 41 18 18 0 0 1-6 9Z"/></svg>
+          <svg class="deco deco--star" viewBox="0 0 50 50"><path d="M25 3l6 14 15 2-11 10 3 15-13-7-13 7 3-15L4 19l15-2Z"/></svg>
+          <svg class="deco deco--heart" viewBox="0 0 50 46"><path d="M25 44S3 31 3 15C3 8 8 3 14 3c5 0 9 3 11 7 2-4 6-7 11-7 6 0 11 5 11 12 0 16-22 29-22 29Z"/></svg>
+          <svg class="deco deco--squiggle" viewBox="0 0 90 30"><path d="M4 15c10-12 20 12 30 0s20 12 30 0 16-8 22-2"/></svg>
+        </div>
+
+        <div class="carousel reveal" data-carousel aria-roledescription="карусель" aria-label="Врачи клиники">
+
+          <div class="carousel__viewport">
+            <div class="carousel__track" data-carousel-track></div>
+          </div>
+
+          <div class="carousel__controls">
+            <button class="carousel__arrow" type="button" data-carousel-prev aria-label="Предыдущий врач">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="carousel__dots" data-carousel-dots></div>
+            <button class="carousel__arrow" type="button" data-carousel-next aria-label="Следующий врач">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="steps">
       <div class="container">
         <header class="section__head section__head--center reveal">
           <span class="eyebrow">Как записаться</span>
@@ -223,7 +238,7 @@
           <li class="step reveal">
             <span class="step__num">2</span>
             <h3>Администратор перезвонит</h3>
-            <p>Подберём врача и&nbsp;удобное время, ответим на&nbsp;вопросы.</p>
+            <p>Поможет выбрать удобное время и&nbsp;ответит на&nbsp;вопросы.</p>
           </li>
           <li class="step reveal">
             <span class="step__num">3</span>
@@ -239,7 +254,7 @@
         <div class="booking__intro reveal">
           <span class="eyebrow eyebrow--light">Онлайн-запись</span>
           <h2 class="section__title">Запишите ребёнка<br>на приём</h2>
-          <p>Оставьте телефон — администратор перезвонит в&nbsp;рабочее время, подберёт специалиста и&nbsp;удобное время.</p>
+          <p>Оставьте телефон&nbsp;— администратор перезвонит в&nbsp;рабочее время, поможет выбрать удобное время и&nbsp;ответит на&nbsp;вопросы.</p>
 
           <div class="booking__alt">
             <a class="booking__alt-link" href="tel:+74852681020">
@@ -366,19 +381,16 @@
         </div>
 
         <div class="contacts__map reveal">
-          <div class="map">
-            <img class="map__image" src="assets/map.jpg" alt="Карта: Ярославль, ул. Республиканская, 6" width="1100" height="760" loading="lazy">
-            <svg class="map__pin" viewBox="0 0 48 60" width="48" height="60" aria-hidden="true">
-              <path d="M24 58C24 58 4 36 4 22a20 20 0 0 1 40 0c0 14-20 36-20 36Z" fill="#94a849" stroke="#fff" stroke-width="3"/>
-              <path d="M24 31s-8-4.9-10.1-9.9C12.3 17.3 14.7 13.5 18.6 13.5c2.1 0 3.8 1.2 5.4 3 1.6-1.8 3.3-3 5.4-3 3.9 0 6.3 3.8 4.7 7.6C32 26.1 24 31 24 31Z" fill="#fff"/>
-            </svg>
-            <span class="map__attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">участники OpenStreetMap</a></span>
+          <div class="map" data-map data-lat="57.641555" data-lon="39.882776" data-zoom="17" role="region" aria-label="Карта: Ярославль, ул. Республиканская, 6">
+            <img class="map__fallback" src="assets/map.jpg" alt="Карта: Ярославль, ул. Республиканская, 6" width="1100" height="760" loading="lazy">
           </div>
           <a class="contacts__map-link" href="https://www.openstreetmap.org/?mlat=57.641555&amp;mlon=39.882776#map=17/57.641555/39.882776" target="_blank" rel="noopener">Открыть карту крупнее</a>
         </div>
       </div>
     </section>
   </main>
+
+  <dialog class="doctor-dialog" data-doctor-dialog aria-labelledby="doctor-dialog-title"></dialog>
 
   <footer class="footer">
     <div class="container footer__inner">
@@ -390,9 +402,9 @@
       <p class="footer__warning">Имеются противопоказания. Необходима консультация специалиста.</p>
 
       <div class="footer__legal">
-        <p><span class="fill">[ЗАПОЛНИТЬ: полное наименование юрлица]</span>, ОГРН <span class="fill">[ЗАПОЛНИТЬ]</span>, ИНН <span class="fill">[ЗАПОЛНИТЬ]</span>. Адрес: г.&nbsp;Ярославль, ул.&nbsp;Республиканская, д.&nbsp;6.</p>
-        <p>Лицензия на&nbsp;медицинскую деятельность №&nbsp;<span class="fill">[ЗАПОЛНИТЬ]</span> от&nbsp;<span class="fill">[ЗАПОЛНИТЬ]</span>, выдана <span class="fill">[ЗАПОЛНИТЬ: лицензирующий орган]</span>.</p>
-        <p>Телефон: +7 (4852) 68-10-20. Режим работы: Пн–Пт 10:00–19:00, Сб 10:00–15:00. E-mail для обращений: <span class="fill">[ЗАПОЛНИТЬ]</span>. Оплата: <span class="fill">[ЗАПОЛНИТЬ: способы оплаты]</span>.</p>
+        <p>ООО «ДОБРОВЕЛС», ОГРН 1267600004638, ИНН 7600002725. Адрес: г.&nbsp;Ярославль, ул.&nbsp;Республиканская, д.&nbsp;6.</p>
+        <p>Лицензия на&nbsp;медицинскую деятельность №&nbsp;Л041-01132-76/07925277 от&nbsp;02.11.2026, выдана Министерством здравоохранения Ярославской области.</p>
+        <p>Телефон: +7 (4852) 68-10-20. Режим работы: Пн–Пт 10:00–19:00, Сб 10:00–15:00. E-mail для обращений: <a href="mailto:dobrovels.kontakt@mail.ru">dobrovels.kontakt@mail.ru</a>. Оплата: наличными или банковской картой.</p>
       </div>
 
       <div class="footer__bottom">
@@ -412,6 +424,7 @@
     <a class="btn btn--primary btn--block" href="#booking">Записаться на приём</a>
   </div>
 
+  <script src="assets/vendor/leaflet/leaflet.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
